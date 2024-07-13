@@ -125,3 +125,7 @@ def update_user(request):
     else:
         messages.success(request, "You Must Be Logged In To Access That Page!!")
         return redirect('home')
+
+
+def search(request):
+    return render(request, "search.html", {})
