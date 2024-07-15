@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Product, Category
+from .models import Product, Category, Profile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm
+from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
 from django.db.models import Q
 
 
@@ -122,6 +122,26 @@ def update_user(request):
             messages.success(request, "User Has Been Updated!!")
             return redirect('home')
         return render(request, "update_user.html", {'user_form': user_form})
+    else:
+        messages.success(request, "You Must Be Logged In To Access That Page!!")
+        return redirect('home')
+
+
+def update_info(request):
+    if request.user.is_authenticated:
+        # Get Current User
+        current_user = Profile.objects.get(user__id=request.user.id)
+
+        # Get original User Form
+        form = UserInfoForm(request.POST or None, instance=current_user)
+
+        if form.is_valid():
+            # Save original form
+            form.save()
+
+            messages.success(request, "Your Info Has Been Updated!!")
+            return redirect('home')
+        return render(request, "update_info.html", {'form': form})
     else:
         messages.success(request, "You Must Be Logged In To Access That Page!!")
         return redirect('home')
