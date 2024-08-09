@@ -71,21 +71,18 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'TCpNBPbTdiiKgGVICQnjdduSgInaeiee',
-        'HOST': 'postgres.railway.internal',
-        'PORT': '32868',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'railway',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'TCpNBPbTdiiKgGVICQnjdduSgInaeiee',
+        # 'HOST': 'postgres.railway.internal',
+        # 'PORT': '32868',
 
     }
 }
 
-DATABASES = {
-'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=1000)
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
