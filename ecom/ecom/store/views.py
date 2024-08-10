@@ -71,16 +71,16 @@ def register_user(request):
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            # login user
+            # log in user
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, ("User Created, Please Fill Out Your Info..."))
+            messages.success(request, ("Username Created - Please Fill Out Your User Info Below..."))
             return redirect('update_info')
         else:
-            messages.success(request, ("Error!"))
+            messages.success(request, ("Whoops! There was a problem Registering, please try again..."))
             return redirect('register')
     else:
-        return render(request, "register", {'form': form})
+        return render(request, 'register.html', {'form': form})
 
 
 def update_password(request):
@@ -105,7 +105,6 @@ def update_password(request):
     else:
         messages.success(request, "You Must Be Logged In To View That Page...")
         return redirect('home')
-
 
     return render(request, "update_password.html", {})
 
@@ -140,11 +139,11 @@ def update_info(request):
             messages.success(request, "Your Info Has Been Updated!!")
             return redirect('home')
 
-
         return render(request, "update_info.html", {'form': form})
     else:
         messages.success(request, "You Must Be Logged In To Access That Page!!")
         return redirect('home')
 
+
 def search(request):
-    return render(request, "searc", {   })
+    return render(request, "searc", {})
