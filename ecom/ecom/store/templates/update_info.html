@@ -15,30 +15,41 @@
             <div class="row">
 
                     <div class="col-md-6 offset-md-3">
-
-                        <br><br>
-                        <form method="POST" action="{% url 'update_info' %}">
-                            {% csrf_token %}
-
-                            {{ form.as_p }}
-                             <br/><br/>
-                            <button type="submit" class="btn btn-secondary">
-                            Update
-                            </button>
-
-
-                        </form>
                         <br/><br/>
+                    <strong>Billing Information</strong>
+
 
                         <br><br>
-                        <br><br>
-                        <br><br>
-                        <br><br>
-                    </div>
+<form method="POST" action="{% url 'update_info' %}">
+    {% csrf_token %}
 
-            </div>
+    {{ form.as_p }}
+    <br/><br/>
+    <strong>Shipping Information</strong>
+    <br/><br/>
+
+    {{ shipping_form.as_p }}
+
+
+    <br/><br/>
+    <button type="submit" class="btn btn-secondary">
+      Update Profile
+    </button>
+</form>
+
+<br/><br/>
+
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+        			</div>
+
+        	</div>
         </div>
-
-
 
 {% endblock %}
