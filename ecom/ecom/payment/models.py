@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save, pre_save
 from store.models import Product
 import datetime
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -50,6 +51,16 @@ class Order(models.Model):
 
     def __str__(self):
         return f'Order - {str(self.id)}'
+
+
+# Auto Add shipping Date
+@receiver(pre_save, sender=Order)
+def set_shipped_date_on_update(sender, instance, **kwargs):
+    if instance.pk:
+        now = datetime.datetime.now()
+        obj = sender._default_manager.get(pk=instance.pk)
+        if instance.shipped and not obj.shipped:
+            instance.date_shipped = now
 
 
 # Create Order Items Model
