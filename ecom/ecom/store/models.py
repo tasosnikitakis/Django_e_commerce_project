@@ -71,6 +71,14 @@ class Product(models.Model):
         return self.name
 
 
+class Company(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='uploads/company/')
+
+    def __str__(self):
+        return self.name
+
+
 # Customer Orders
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

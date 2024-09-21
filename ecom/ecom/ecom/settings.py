@@ -10,6 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = 'django-insecure-v@8#zyrtska6+s14^_(4+cn7=c1=4k*j8=2k)r!s3&28v^5^g_'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -78,6 +79,7 @@ DATABASES = {
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': os.environ['DB_PASSWORD'],
+        # 'PASSWORD': 'rSszdqjyzSAQQYlHdadgqtnBdaodzxjN',
         'HOST': 'viaduct.proxy.rlwy.net',
         'PORT': '52229',
 
