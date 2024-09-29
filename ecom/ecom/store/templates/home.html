@@ -7,11 +7,40 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop homepage template</p>
+                    <h1 class="display-4 fw-bolder">Community Pharmacies</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Your eshop gateway</p>
                 </div>
             </div>
         </header>
+        <!-- Search-->
+        <div class="container">
+        	<div class="row">
+        		<center>
+        			<div class="col-10">
+        				<br/><br/>
+                    <div class="card">
+<!--                      <div class="card-header">-->
+<!--                        Search Products-->
+<!--                      </div>-->
+                      <div class="card-body">
+                        <form method="POST" action="{% url 'search' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+
+                              <input type="text" class="form-control" placeholder="Search For Products" name="searched">
+                            </div>
+                        <button type="submit" class="btn btn-secondary">
+                            Search Products
+                        </button>
+                        </form>
+                      </div>
+                    </div>
+
+
+
+
+
+
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
