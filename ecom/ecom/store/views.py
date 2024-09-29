@@ -10,8 +10,6 @@ from django.db.models import Q
 import json
 from openai import OpenAI
 
-client = OpenAI(api_key='')
-from openai.types.chat import ChatCompletion
 import re
 from cart.cart import Cart
 
